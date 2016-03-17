@@ -3,4 +3,38 @@
     max-height:500px;
 }
 
+h1{
+    font-family: lemon;
+    font: bold;
+}
 
+body{
+    background-image: url("https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjF06vawMbLAhXDGz4KHR6UBqAQjRwIBw&url=https%3A%2F%2Fcss-tricks.com%2Flive-weather-display-using-css-jquery-and-php%2F&bvm=bv.116954456,d.d2s&psig=AFQjCNFljZMKw5nVpBIcCX0CxhN5ZPwT_g&ust=1458262338475630");
+}
+
+#random {
+  background: #03f7ff;
+  background-image: -webkit-linear-gradient(top, #03f7ff, #650894);
+  background-image: -moz-linear-gradient(top, #03f7ff, #650894);
+  background-image: -ms-linear-gradient(top, #03f7ff, #650894);
+  background-image: -o-linear-gradient(top, #03f7ff, #650894);
+  background-image: linear-gradient(to bottom, #03f7ff, #650894);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #000000;
+  font-size: 25px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+#random:hover {
+  background: #f720b3;
+  background-image: -webkit-linear-gradient(top, #f720b3, #1eff12);
+  background-image: -moz-linear-gradient(top, #f720b3, #1eff12);
+  background-image: -ms-linear-gradient(top, #f720b3, #1eff12);
+  background-image: -o-linear-gradient(top, #f720b3, #1eff12);
+  background-image: linear-gradient(to bottom, #f720b3, #1eff12);
+  text-decoration: none;
+}

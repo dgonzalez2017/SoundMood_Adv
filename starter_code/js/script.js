@@ -15,7 +15,7 @@
 // # Initialize the Soundcloud API client with our client ID
 //
 SC.initialize({
-  client_id: '5aa8e389ba4e24b6106af5159ab3e344'
+  client_id: '90f2a1fb287219fc9350fe313a7dfced'
 });
 
 
@@ -30,11 +30,18 @@ SC.initialize({
 // $(document).ready() runs once the page DOM is ready for JavaScript
 // to execute. A page can't be manipulated safely until the document is ready.
 //
-$(document).ready(function () {
+$(document).ready(function() {
+
+
+
   // Add click handlers to 'go' and 'random' buttons here.
+  $("#go").click(function() {
+    goClicked();
+  });
+  $("#random").click(function() {
+    randomClicked();
+  });
 });
-
-
 // ===========================
 //
 //        Play a song
@@ -44,12 +51,6 @@ $(document).ready(function () {
 // # Play a track
 //
 // Play a track using the Souncdloud Javascript SDK
-//
-function playOneTrack () {
-  // TODO: fill this out
-}
-
-
 // ======================================
 //
 //    Play a song for the user's mood
@@ -61,13 +62,18 @@ var currentSong;
 
 //
 // # 'Go' button click handler
-//
+{
+
+}
 // 1. Get the user's mood from the form
 // 2. Search Souncloud for a song for the mood
 // 3. Update jumbotron #moodstatus to dipsplay the mood
 //
-function goClicked () {
+function goClicked() {
   // TODO: fill this out
+  var userSelection = $("#mood").val();
+  searchTracks(userSelection);
+  updateJumboTron(userSelection);
 }
 
 //
@@ -80,8 +86,19 @@ function goClicked () {
 //
 // * **mood**, the user's mood.
 //
-function searchTracks (mood) {
+function searchTracks(userSelection) {
   // TODO: fill this out
+  SC.get('/tracks', {
+    mood: userSelection
+  }).then(function(tracks) {
+    var id = tracks[0].id;
+    playTrack(id);
+    var title = tracks[0].title;
+   updateJumboTron(userSelection, title, tracks);
+  });
+
+
+
 }
 
 //
@@ -94,8 +111,11 @@ function searchTracks (mood) {
 //
 // * **trackid**, the ID of the track to play.
 //
-function playTrack (trackid) {
+function playTrack(trackid) {
   // TODO: fill this out
+  SC.stream('/tracks/' + trackid).then(function(player) {
+    player.play();
+  });
 }
 
 //
@@ -106,8 +126,12 @@ function playTrack (trackid) {
 //
 // * **mood**, the user's mood
 //
-function updateJumboTron (mood) {
-  $('#moodstatus').text('It sounds like you are in a ' + mood +  ' mood!!');
+function updateJumboTron(mood, title, tracks) {
+  $('#moodstatus').text('It sounds like you are in a ' + mood + ' mood!!');
+  $('#songtitle').text('You are listening to: ' + title );
+  var songArt = $("<img src=\"" + tracks[0].artwork_url +"\"/>");
+  $(".jumbotron").append(songArt);
+  
 }
 
 
@@ -118,25 +142,39 @@ function updateJumboTron (mood) {
 // =======================
 
 // List of moods
-var moodList = [];
 
+var moodList = [
+    "happy", "sad", "mad", "tired", "confused", "calm", "dramatic", "funny", "upbeat", "romantic", "inspirational"
+  ];
 //
 // # 'Random' button click handler
 //
 // Pick a mood at random from moodList and find a track for that mood.
 //
-function randomClicked () {
-  // TODO: fill this out
-}
+function randomClicked() {
+  
+ var yomood = randomMood();
+ searchTracks(yomood);
+};
+
+
+
+
 
 //
 // # Random Mood
 //
 // Returns a random mood from moodList.
 //
-function randomMood () {
+function randomMood() {
   // TODO: fill this out
+  
+  var word = moodList[Math.floor(Math.random() * moodList.length)];
+
+  
+   searchTracks(word);
 }
+
 
 
 
@@ -162,7 +200,7 @@ function randomMood () {
 //
 // * **color**, the color to change to
 //
-function changeColor (color) {
+function changeColor(color) {
   // TODO: fill this out
 }
 
@@ -177,10 +215,6 @@ function changeColor (color) {
 //
 // * returns a color's hex code
 //
-function getColor (mood) {
-  // TODO: fill this out
-}
-
 
 //
 // 2. Typeahead

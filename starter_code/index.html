@@ -7,8 +7,9 @@
     <link rel="shortcut icon" href="images/favicon.ico">
 
     <title>Soundmood</title>
-
+    
     <!-- CSS -->
+    <link rel="stylesheet" type="text/css" src="style.css">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <!-- Bootstrap Jumbotron -->
@@ -20,16 +21,64 @@
     <!-- Bootstrap -->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <!-- Soundcloud API -->
-    <script src="//connect.soundcloud.com/sdk.js"></script>
+    <script src="//connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
     <!-- Our JS -->
     <script src="js/script.js"></script>
+    
+    <style type="text/css">
+  body{
+    font-family: Comic Sans MS;
+    color:black;
+}
+h1{
+  font-style: bold;
+  font-size:45px;
+}
+
+#go{
+  color:purple;
+  font-style: bold;
+  font-size:20px;
+}
+
+#random {
+  font-family: Comic Sans MS;
+  background: #03f7ff;
+  background-image: -webkit-linear-gradient(top, #03f7ff, #650894);
+  background-image: -moz-linear-gradient(top, #03f7ff, #650894);
+  background-image: -ms-linear-gradient(top, #03f7ff, #650894);
+  background-image: -o-linear-gradient(top, #03f7ff, #650894);
+  background-image: linear-gradient(to bottom, #03f7ff, #650894);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  color: #000000;
+  font-size: 25px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+#random:hover {
+  background: #f720b3;
+  background-image: -webkit-linear-gradient(top, #f720b3, #1eff12);
+  background-image: -moz-linear-gradient(top, #f720b3, #1eff12);
+  background-image: -ms-linear-gradient(top, #f720b3, #1eff12);
+  background-image: -o-linear-gradient(top, #f720b3, #1eff12);
+  background-image: linear-gradient(to bottom, #f720b3, #1eff12);
+  text-decoration: none;
+}
+
+.jumbotron {
+  background:pink;
+}
+    </style>
 
   </head>
-  <body>
+  <body background="https://pixel.nymag.com/imgs/daily/vulture/2015/10/20/drake-dance/drake-2.w529.h352.gif">
     <div class="container">
       <div class="jumbotron">
-        <h1>Soundmood</h1>
-        <p class="lead">Listen to your heart, you can never go wrong.</p>
+        <h1>The key for all moods</h1>
+        <p class="lead">If you're always changing moods like me, let's get it.</p>
         <form>
           <div class="input-group">
             <input id="mood" type="text" class="form-control" placeholder="How are you feeling?">
